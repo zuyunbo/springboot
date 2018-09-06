@@ -1,0 +1,11 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.springboot.mapper.RoleInfoMapper">
+    <cache readOnly="true" eviction="FIFO"/>
+
+
+    <select id="listQuery" parameterType="RoleInfoQueryParam" resultType="RoleInfo">
+        SELECT * FROM role_info
+    </select>
+
+</mapper>

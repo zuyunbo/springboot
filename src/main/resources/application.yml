@@ -1,0 +1,44 @@
+# springboot 自带的tomcat端口号
+server:
+  port: 8881
+
+#  spring druid 配置数据源本次使用的是mysql
+spring:
+  #连接池配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/zuyunbo
+      username: root
+      password: 123456
+
+
+mybatis:
+  # mybatis扫描 使得数据库字段和实体对应
+  type-aliases-package: com.bobo.springboot.entity ,
+                        com.bobo.springboot.param
+  # 我们xml 所存储的地方
+  mapper-locations: classpath:mapper/*.xml
+
+
+  configuration:
+    #使用jdbc的getGeneratekeys获取自增主键值
+    use-generated-keys: true
+    #开启mybatis缓存策略
+    cache-enabled: false
+    #开启驼峰命名转换       如数据库  user_name  对应实体  userName
+    map-underscore-to-camel-case: true
+
+#分页插件 很好用可以先去了解一下 我们会在接下来的项目讲解
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+# 神器 通用mapper 会在接下来的项目详解
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  not-empty: true

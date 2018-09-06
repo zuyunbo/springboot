@@ -1,0 +1,16 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bobo.springboot.mapper.UserInfoMapper">
+    <cache readOnly="true" eviction="FIFO"/>
+
+
+    <select id="listQuery" parameterType="UserInfoQueryParam" resultType="UserInfo">
+        SELECT * FROM user_info
+        <where>
+            <if test="name!=null and name!=''">
+                user_info.name = #{name}
+            </if>
+        </where>
+    </select>
+
+</mapper>
